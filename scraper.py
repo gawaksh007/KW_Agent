@@ -13,7 +13,8 @@ def scrape_competitor_content(competitor_url):
     """Scrapes competitor's blog titles as keywords"""
     competitor_url = validate_url(competitor_url)  # Validate URL first
     headers = {"User-Agent": "Mozilla/5.0"}
-    response = requests.get(competitor_url, headers=headers)
+    # Added verify=False to bypass SSL certificate verification
+    response = requests.get(competitor_url, headers=headers, verify=False)
 
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
