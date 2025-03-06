@@ -1,8 +1,17 @@
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse
+
+def validate_url(url):
+    """Ensure the URL includes a scheme; if not, prepend 'https://'."""
+    parsed = urlparse(url)
+    if not parsed.scheme:
+        url = "https://" + url
+    return url
 
 def scrape_competitor_content(competitor_url):
     """Scrapes competitor's blog titles as keywords"""
+    competitor_url = validate_url(competitor_url)  # Validate URL first
     headers = {"User-Agent": "Mozilla/5.0"}
     response = requests.get(competitor_url, headers=headers)
 
@@ -14,7 +23,7 @@ def scrape_competitor_content(competitor_url):
     else:
         return []
 
-# Testing
+# Testing the function
 if __name__ == "__main__":
-    competitor_url = "https://example.com/blog"
+    competitor_url = "www.intelegencia.com"
     print(scrape_competitor_content(competitor_url))
