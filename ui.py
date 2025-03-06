@@ -14,7 +14,7 @@ keyword = st.sidebar.text_input("Enter a keyword to analyze:", value="AI Marketi
 analyze_button = st.sidebar.button("Analyze Now")
 
 # Main page title and instructions
-st.title("🔍 Predictive Keyword & Content Opportunity Agent")
+st.title("Predictive Keyword & Content Opportunity Agent")
 st.markdown("""
 This tool helps you discover high-potential content opportunities by analyzing competitor data and predicting keyword trends.
 - **Website URL:** Your site to compare against.
